@@ -8,7 +8,7 @@
       <img :src="company.logo" v-bind:alt="company.name" />
       <h2>{{ company.name }}</h2>
       <section class="content">
-        <p>Total Violations: {{ company.totalViolations }}</p>
+        <p>Total Privacy Violations: {{ company.totalViolations }}</p>
         <p>Total Amount: ${{ (company.totalAmount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') }}</p>
       </section>
       <button>Details</button>
@@ -54,13 +54,18 @@ export default {
 @import "../styles/variables.scss";
 
 #list {
-  margin: 5rem 0;
+  margin-top: 1rem;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  background-color: $background-color-list;
+  padding: 2rem;
 
   .card {
+    margin: 1rem;
     padding: 1rem 0 0 0;
+    border-radius: 2rem;
+    background-color: white;
     width: 30%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
@@ -71,6 +76,14 @@ export default {
 
     &:hover {
       box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+
+    @media (max-width: $desktop-sm) {
+      width: 40%;
+    }
+
+    @media (max-width: $tablet-sm) {
+      width: 100%;
     }
 
     img {
@@ -87,7 +100,8 @@ export default {
     }
 
     button {
-      background-color: $main-color;
+      background-color: $normal;
+      border-radius: 0 0 2rem 2rem;
       width: 100%;
       padding: 1rem;
       color: white;
