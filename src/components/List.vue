@@ -82,7 +82,7 @@ export default {
       width: 40%;
     }
 
-    @media (max-width: $tablet-sm) {
+    @media (max-width: $tablet-lg) {
       width: 100%;
     }
 
@@ -92,6 +92,7 @@ export default {
 
     .content {
       margin: 1rem 0;
+      padding: 1rem;
       border-top: 0.2rem solid $main-color;
     }
 
