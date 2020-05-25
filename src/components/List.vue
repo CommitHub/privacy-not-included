@@ -62,8 +62,8 @@ export default {
   padding: 2rem;
 
   .card {
-    margin: 1rem;
-    padding: 1rem 0 0 0;
+    margin: 1rem 0;
+    padding-top: 1rem;
     border-radius: 2rem;
     background-color: white;
     width: 30%;
