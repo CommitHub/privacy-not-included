@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>Privacy Not Included</h1>
+    <h1 class="title">Privacy Not Included</h1>
     <List />
   </div>
 </template>
