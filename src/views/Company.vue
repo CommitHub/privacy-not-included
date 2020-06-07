@@ -13,7 +13,7 @@ export default {
     };
   },
   created() {
-    this.company = this.$store.state.companies.filter(company => company.id !== this.$route.params.id)[0];
+    this.company = this.$store.state.companies.filter(company => company.id === this.$route.params.id)[0];
   }
 };
 </script>
