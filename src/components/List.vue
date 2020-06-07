@@ -11,9 +11,7 @@
         <p>Total Privacy Violations: {{ company.totalViolations }}</p>
         <p>Total Amount: ${{ (company.totalAmount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') }}</p>
       </section>
-      <button>
-        <router-link :to="{ name: 'company', params: { id: company.id }}">Details</router-link>
-      </button>
+      <router-link :to="{ name: 'company', params: { id: company.id }}">Details</router-link>
     </section>
   </div>
 </template>
@@ -74,6 +72,8 @@ export default {
 
     img {
       height: 15rem;
+      max-width: 90%;
+      margin: 1rem 0;
     }
 
     .content {
@@ -86,12 +86,13 @@ export default {
       margin: 1rem 0;
     }
 
-    button {
+    a {
+      color: white;
       background-color: $normal;
       border-radius: 0 0 2rem 2rem;
       width: 100%;
-      padding: 1rem;
-      color: white;
+      padding: 1.5rem 0;
+      text-align: center;
     }
   }
 }
