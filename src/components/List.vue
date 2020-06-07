@@ -11,14 +11,14 @@
         <p>Total Privacy Violations: {{ company.totalViolations }}</p>
         <p>Total Amount: ${{ (company.totalAmount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') }}</p>
       </section>
-      <button>Details</button>
+      <button>
+        <router-link :to="{ name: 'company', params: { id: company.id }}">Details</router-link>
+      </button>
     </section>
   </div>
 </template>
 
 <script>
-import db from "../firebase/firebaseInit.js";
-
 export default {
   name: 'List',
   data() {
@@ -27,24 +27,10 @@ export default {
     };
   },
   created() {
-    db.collection("companies")
-      .get()
-      .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          const data = {
-            id: doc.id,
-            description: doc.data().description,
-            logo: doc.data().logo,
-            name: doc.data().name,
-            privacyViolation: doc.data().privacy_violation,
-            totalAmount: doc.data().privacy_violation.reduce((acc, violation) => {
-              return acc + violation.amount
-            }, 0),
-            totalViolations: doc.data().privacy_violation.length
-          };
-          this.companies.push(data);
-        });
-      });
+    if (!this.$store.state.companies.length) {
+      this.$store.commit('getCompaniesData');
+    }
+    this.companies = this.$store.state.companies;
   }
 };
 
