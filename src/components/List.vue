@@ -9,7 +9,7 @@
       <h2>{{ company.name }}</h2>
       <section class="content">
         <p>Total Privacy Violations: {{ company.totalViolations }}</p>
-        <p>Total Amount: ${{ (company.totalAmount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') }}</p>
+        <p>Total Amount: ${{ formatMoney(company.totalAmount) }}</p>
       </section>
       <router-link :to="{ name: 'company', params: { id: company.id }}">Details</router-link>
     </section>
@@ -17,18 +17,17 @@
 </template>
 
 <script>
+import formatMoney from '../helpers/format-money.js';
+
 export default {
   name: 'List',
   data() {
     return {
-      companies: []
+      companies: this.$store.state.companies
     };
   },
-  created() {
-    if (!this.$store.state.companies.length) {
-      this.$store.commit('getCompaniesData');
-    }
-    this.companies = this.$store.state.companies;
+  methods: {
+    formatMoney
   }
 };
 
