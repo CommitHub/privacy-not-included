@@ -3,8 +3,8 @@
     <h1 class="title">Privacy Not Included</h1>
     <section class="jumbotron">
       <div class="description-container">
-        <h2>Security should be the focus of every tech company</h2>
-        <p>Tech companies have been selling our data for a while with no concern to our privacy. The intention of this site is to bring that information in a digestible form to the people.</p>
+        <h2>Security should be the focus of every company</h2>
+        <p>Companies have been selling our data for a while with no concern to our privacy. The intention of this site is to bring that information in a digestible form to the people.</p>
       </div>
       <img src="@/assets/images/team-work.png" />
     </section>
