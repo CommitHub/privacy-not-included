@@ -9,14 +9,26 @@
           <th>Amount</th>
           <th>Year</th>
           <th>Descriptions</th>
+          <th>Source</th>
         </tr>
         <tr
           v-for="violation in company.privacyViolation"
           :key="violation.amount"
         >
-          <td>${{ formatMoney(violation.amount) }}</td>
-          <td>{{ violation.year }}</td>
+          <td>{{ '$' + formatMoney(violation.amount) || 'Amount is not available at this time' }}</td>
+          <td>{{ violation.year || 'Year is not available at this time' }}</td>
           <td>{{ violation.description || 'Description is not available at this time' }}</td>
+          <td>
+            <a
+              v-if="violation.source"
+              v-bind:href="violation.source"
+              target="_blank"
+              rel="noopener"
+            >
+              {{ violation.source }}
+            </a>
+            <p v-if="!violation.source">Source is not available at this time</p>
+          </td>
         </tr>
       </table>
     </div>
