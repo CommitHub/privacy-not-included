@@ -1,23 +1,25 @@
 <template>
   <div id="company">
-    <h1>{{ company.name }}</h1>
-    <img :src="company.logo" v-bind:alt="company.name" />
-    <p>{{ company.description }}</p>
-    <table>
-      <tr>
-        <th>Amount</th>
-        <th>Year</th>
-        <th>Descriptions</th>
-      </tr>
-      <tr
-        v-for="violation in company.privacyViolation"
-        :key="violation.amount"
-      >
-        <td>${{ formatMoney(violation.amount) }}</td>
-        <td>{{ violation.year }}</td>
-        <td>{{ violation.description || 'Description is not available at this time' }}</td>
-      </tr>
-    </table>
+    <div v-if="company">
+      <h1>{{ company.name }}</h1>
+      <img :src="company.logo" v-bind:alt="company.name" />
+      <p>{{ company.description }}</p>
+      <table>
+        <tr>
+          <th>Amount</th>
+          <th>Year</th>
+          <th>Descriptions</th>
+        </tr>
+        <tr
+          v-for="violation in company.privacyViolation"
+          :key="violation.amount"
+        >
+          <td>${{ formatMoney(violation.amount) }}</td>
+          <td>{{ violation.year }}</td>
+          <td>{{ violation.description || 'Description is not available at this time' }}</td>
+        </tr>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -26,10 +28,10 @@ import formatMoney from '../helpers/format-money.js';
 
 export default {
   name: 'Company',
-  data() {
-    return {
-      company: this.$store.state.companies.filter(company => company.id === this.$route.params.id)[0]
-    };
+  computed: {
+    company() {
+      return this.$store.state.companies.filter(company => company.id === this.$route.params.id)[0];
+    }
   },
   methods: {
     formatMoney
