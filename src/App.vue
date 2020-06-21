@@ -12,6 +12,9 @@ export default {
   name: 'App',
   components: {
     Footer
+  },
+  created() {
+    this.$store.commit('getCompaniesData');
   }
 }
 </script>
