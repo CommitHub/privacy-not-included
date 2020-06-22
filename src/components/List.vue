@@ -9,42 +9,25 @@
       <h2>{{ company.name }}</h2>
       <section class="content">
         <p>Total Privacy Violations: {{ company.totalViolations }}</p>
-        <p>Total Amount: ${{ (company.totalAmount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') }}</p>
+        <p>Total Amount: ${{ formatMoney(company.totalAmount) }}</p>
       </section>
-      <button>Details</button>
+      <router-link :to="{ name: 'company', params: { id: company.id }}">Details</router-link>
     </section>
   </div>
 </template>
 
 <script>
-import db from "../firebase/firebaseInit.js";
+import formatMoney from '../helpers/format-money.js';
 
 export default {
   name: 'List',
   data() {
     return {
-      companies: []
+      companies: this.$store.state.companies
     };
   },
-  created() {
-    db.collection("companies")
-      .get()
-      .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          const data = {
-            id: doc.id,
-            description: doc.data().description,
-            logo: doc.data().logo,
-            name: doc.data().name,
-            privacyViolation: doc.data().privacy_violation,
-            totalAmount: doc.data().privacy_violation.reduce((acc, violation) => {
-              return acc + violation.amount
-            }, 0),
-            totalViolations: doc.data().privacy_violation.length
-          };
-          this.companies.push(data);
-        });
-      });
+  methods: {
+    formatMoney
   }
 };
 
@@ -88,6 +71,8 @@ export default {
 
     img {
       height: 15rem;
+      max-width: 90%;
+      margin: 1rem 0;
     }
 
     .content {
@@ -100,12 +85,13 @@ export default {
       margin: 1rem 0;
     }
 
-    button {
+    a {
+      color: white;
       background-color: $normal;
       border-radius: 0 0 2rem 2rem;
       width: 100%;
-      padding: 1rem;
-      color: white;
+      padding: 1.5rem 0;
+      text-align: center;
     }
   }
 }

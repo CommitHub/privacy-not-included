@@ -1,10 +1,13 @@
 <template>
   <div id="home">
-    <h1 class="title">Privacy Not Included</h1>
+    <header>
+      <img class="logo" src="@/assets/images/logo.png" alt="security lock logo" />
+      <h1>Privacy Not Included</h1>
+    </header>
     <section class="jumbotron">
       <div class="description-container">
-        <h2>Security should be the focus of every tech company</h2>
-        <p>Tech companies have been selling our data for a while with no concern to our privacy. The intention of this site is to bring that information in a digestible form to the people.</p>
+        <h2>Security should be the focus of every company</h2>
+        <p>Companies have been selling our data for a while with no concern to our privacy. The intention of this site is to bring that information in a digestible form to the people.</p>
       </div>
       <img src="@/assets/images/team-work.png" />
     </section>
@@ -27,6 +30,18 @@ export default {
 @import "../styles/variables.scss";
 
 #home {
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+
+    .logo {
+      margin: 0 1rem;
+      width: 2%;
+    }
+  }
+
   .jumbotron {
     display: flex;
     justify-content: space-around;
