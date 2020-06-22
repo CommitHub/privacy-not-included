@@ -39,6 +39,14 @@ export default {
     .logo {
       margin: 0 1rem;
       width: 2%;
+
+      @media (max-width: $mobile-lg) {
+        width: 10%;
+      }
+
+      @media (max-width: $mobile-sm) {
+        width: 20%;
+      }
     }
   }
 
