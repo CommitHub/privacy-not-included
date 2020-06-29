@@ -1,18 +1,21 @@
 <template>
   <div id="list">
-    <section
-      class="card"
-      v-for="company in companies"
-      :key="company.id"
-    >
-      <img :src="company.logo" v-bind:alt="company.name" />
-      <h2>{{ company.name }}</h2>
-      <section class="content">
-        <p>Total Privacy Violations: {{ company.totalViolations }}</p>
-        <p>Total Amount: ${{ formatMoney(company.totalAmount) }}</p>
+    <h2>Companies</h2>
+    <div class="list-container">
+      <section
+        class="card"
+        v-for="company in companies"
+        :key="company.id"
+      >
+        <img :src="company.logo" v-bind:alt="company.name" />
+        <h2>{{ company.name }}</h2>
+        <section class="content">
+          <p>Total Privacy Violations: {{ company.totalViolations }}</p>
+          <p>Total Amount: ${{ formatMoney(company.totalAmount) }}</p>
+        </section>
+        <router-link :to="{ name: 'company', params: { id: company.id }}">Details</router-link>
       </section>
-      <router-link :to="{ name: 'company', params: { id: company.id }}">Details</router-link>
-    </section>
+    </div>
   </div>
 </template>
 
@@ -37,12 +40,18 @@ export default {
 @import "../styles/variables.scss";
 
 #list {
-  margin-top: 1rem;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  background-color: $background-color-list;
-  padding: 2rem;
+   padding: 2rem;
+   margin-top: 1rem;
+
+   h2 {
+    margin: 4rem 0;
+   }
+
+  .list-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
 
   .card {
     margin: 1rem 0;

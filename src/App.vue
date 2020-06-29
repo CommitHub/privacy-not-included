@@ -42,7 +42,7 @@ export default {
   }
 
   h1 {
-  font-size: 2em;
+    font-size: 2em;
   }
 
   h2 {

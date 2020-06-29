@@ -1,0 +1,17 @@
+.bigger-text {
+	font-size: 1.5em;
+
+  @media (max-width: $desktop-sm) {
+    font-size: 1.2em;
+  }
+}
+
+.subtext {
+	line-height: 1.4;
+	color: lighten($main-font-color, 30%);
+	font-size: 1em;
+
+  @media (max-width: $desktop-sm) {
+    font-size: 0.8em;
+	}
+}
