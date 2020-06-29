@@ -41,7 +41,6 @@ export default {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  background-color: $background-color-list;
   padding: 2rem;
 
   .card {
