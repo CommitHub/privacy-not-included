@@ -1,5 +1,6 @@
 <template>
 	<section id="dashboard">
+		<h2>Dashboard</h2>
 		<section class="general-info-container">
 			<div 
 				class="general-info-card"
@@ -57,17 +58,21 @@ export default {
 @import "../styles/variables.scss";
 
 #dashboard {
-	margin: 2rem 0;
+	padding: 2rem;
   background-color: $background-color-list;
+
+	h2 {
+		margin: 1rem 0;
+	}
 
 	.general-info-container {
 		display: flex;
-		justify-content: space-around;
+		justify-content: space-between;
 		flex-wrap: wrap;
 		padding: 3rem 0;
 
 		.general-info-card {
-			border-radius: 2rem;
+			border-radius: 1rem;
 			flex: 1;
 			padding: 2rem;
 			margin: 1rem;
