@@ -5,33 +5,35 @@
       <h1>{{ company.name }}</h1>
       <img :src="company.logo" v-bind:alt="company.name" />
       <p>{{ company.description }}</p>
-      <table>
-        <tr>
-          <th>Amount</th>
-          <th>Year</th>
-          <th>Descriptions</th>
-          <th>Source</th>
-        </tr>
-        <tr
-          v-for="violation in company.privacyViolation"
-          :key="violation.amount"
-        >
-          <td>{{ '$' + formatMoney(violation.amount) || 'Amount is not available at this time' }}</td>
-          <td>{{ violation.year || 'Year is not available at this time' }}</td>
-          <td>{{ violation.description || 'Description is not available at this time' }}</td>
-          <td>
-            <a
-              v-if="violation.source"
-              v-bind:href="violation.source"
-              target="_blank"
-              rel="noopener"
-            >
-              {{ violation.source }}
-            </a>
-            <p v-if="!violation.source">Source is not available at this time</p>
-          </td>
-        </tr>
-      </table>
+      <div class="table-container">
+        <table>
+          <tr>
+            <th>Amount</th>
+            <th>Year</th>
+            <th>Descriptions</th>
+            <th>Source</th>
+          </tr>
+          <tr
+            v-for="violation in company.privacyViolation"
+            :key="violation.amount"
+          >
+            <td>{{ '$' + formatMoney(violation.amount) || 'Amount is not available at this time' }}</td>
+            <td>{{ violation.year || 'Year is not available at this time' }}</td>
+            <td>{{ violation.description || 'Description is not available at this time' }}</td>
+            <td>
+              <a
+                v-if="violation.source"
+                v-bind:href="violation.source"
+                target="_blank"
+                rel="noopener"
+              >
+                {{ violation.source }}
+              </a>
+              <p v-if="!violation.source">Source is not available at this time</p>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 </template>
@@ -77,22 +79,27 @@ export default {
     margin: 3rem 0;
   }
 
-  table {
-    max-width: 100%;
+  .table-container {
+    overflow-x:auto;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+    table {
+      max-width: 100%;
+    }
+
+    th, td {
+      padding: 1rem;
+    }
+
+    tr {
+      border-bottom: 0.2rem solid darken($background-color-list, 5%);
+    }
+
+    tr:nth-child(even){
+      background-color: $background-color-list;
+    }
   }
 
-  th, td {
-    padding: 1rem;
-  }
-
-  tr {
-    border-bottom: 0.2rem solid darken($background-color-list, 5%);
-  }
-
-  tr:nth-child(even){
-    background-color: $background-color-list;
-  }
 
 }
 </style>
