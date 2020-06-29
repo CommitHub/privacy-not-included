@@ -32,18 +32,19 @@ import formatMoney from '../helpers/format-money.js';
 export default {
 	name: 'Dashboard',
 	computed: {
+		allPrivacyViolations() {
+			const allPrivacyViolations = [];
+			this.$store.state.companies.forEach(company => company.privacyViolation.forEach(violation => allPrivacyViolations.push(violation)));
+			return allPrivacyViolations;
+		},
 		totalCompanies() {
 			return this.$store.state.companies.length;
 		},
 		totalAmount() {
-			const allPrivacyViolations = []; 
-			this.$store.state.companies.forEach(company => company.privacyViolation.forEach(violation => allPrivacyViolations.push(violation)));
-			return formatMoney(allPrivacyViolations.reduce((acc, violation) => acc + violation.amount, 0));
+			return formatMoney(this.allPrivacyViolations.reduce((acc, violation) => acc + violation.amount, 0));
 		},
 		totalViolations() {
-			const allPrivacyViolations = []; 
-			this.$store.state.companies.forEach(company => company.privacyViolation.forEach(violation => allPrivacyViolations.push(violation)));
-			return allPrivacyViolations.length;
+			return this.allPrivacyViolations.length;
 		},
 	},
   methods: {
