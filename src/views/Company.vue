@@ -68,6 +68,10 @@ export default {
     color: black;
   }
 
+  h1 {
+    margin-bottom: 2rem;
+  }
+
   img {
     display: block;
     max-width: 100%;

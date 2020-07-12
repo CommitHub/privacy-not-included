@@ -9,6 +9,7 @@
       >
         <img :src="company.logo" v-bind:alt="company.name" />
         <h2>{{ company.name }}</h2>
+        <span></span>
         <section class="content">
           <p>Total Privacy Violations: {{ company.totalViolations }}</p>
           <p>Total Amount: ${{ formatMoney(company.totalAmount) }}</p>
@@ -79,15 +80,22 @@ export default {
     }
 
     img {
-      height: 15rem;
+      height: 10rem;
       max-width: 90%;
       margin: 1rem 0;
     }
 
-    .content {
-      margin: 1rem 0;
-      padding: 1rem;
+    h2 {
+      padding: 0 2rem;
+    }
+
+    span {
+      width: 80%;
       border-top: 0.2rem solid $main-color;
+    }
+
+    .content {
+      padding: 1rem;
     }
 
     .content > * {
