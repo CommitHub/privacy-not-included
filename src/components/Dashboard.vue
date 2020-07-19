@@ -20,7 +20,7 @@
 				class="general-info-card"
 				v-if="totalAmount"
 			>
-				<p class="bigger-text">${{ totalAmount }}</p>
+				<p class="bigger-text">{{ totalAmount }}</p>
 				<p class="subtext">Total Amount Paid</p>
 			</div>
 		</section>
