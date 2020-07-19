@@ -17,7 +17,7 @@
             v-for="violation in company.privacyViolation"
             :key="violation.amount"
           >
-            <td>{{ '$' + formatMoney(violation.amount) || 'Amount is not available at this time' }}</td>
+            <td>{{ formatMoney(violation.amount) || 'Amount is not available at this time' }}</td>
             <td>{{ violation.year || 'Year is not available at this time' }}</td>
             <td>{{ violation.description || 'Description is not available at this time' }}</td>
             <td>
