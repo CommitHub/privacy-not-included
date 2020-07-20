@@ -1,6 +1,7 @@
 <template>
-  <div id="list">
+  <div id="list" v-if="companies">
     <h2>Companies</h2>
+    <ExportCSV :jsonData="companies" :formatFn="formatJson" />
     <div class="list-container">
       <section
         class="card"
@@ -12,7 +13,7 @@
         <span></span>
         <section class="content">
           <p>Total Privacy Violations: {{ company.totalViolations }}</p>
-          <p>Total Amount: ${{ formatMoney(company.totalAmount) }}</p>
+          <p>Total Amount: {{ formatMoney(company.totalAmount) }}</p>
         </section>
         <router-link :to="{ name: 'company', params: { id: company.id }}">Details</router-link>
       </section>
@@ -21,17 +22,37 @@
 </template>
 
 <script>
+import ExportCSV from "@/components/ExportCSV.vue";
 import formatMoney from '../helpers/format-money.js';
 
 export default {
   name: 'List',
+  components: {
+    ExportCSV
+  },
   data() {
     return {
-      companies: this.$store.state.companies
+      companies: this.$store.state.companies,
     };
   },
   methods: {
-    formatMoney
+    formatMoney,
+    formatJson: function(companies) {
+      const formattedData = [];
+      companies.forEach(company => {
+        company.privacyViolation.forEach(violation => {
+          formattedData.push({
+            name: company.name,
+            amount: this.formatMoney(violation.amount),
+            year: violation.year,
+            source: violation.source,
+            description: violation.description
+          });
+        });
+      });
+
+      return formattedData
+    }
   }
 };
 
