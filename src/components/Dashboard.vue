@@ -24,14 +24,37 @@
 				<p class="subtext">Total Amount Paid</p>
 			</div>
 		</section>
+		<section class="chart-container">
+			<h3>Top 10 Privacy Violators</h3>
+			<p>The data is calculated on the total amount of violations accrued. Below you can search for each company and see the details</p>
+			<div class="chart">
+				<bar v-if="datacollection" :chart-data="datacollection" :chart-options="options"></bar>
+			</div>
+		</section>
 	</section>
 </template>
 
 <script>
 import formatMoney from '../helpers/format-money.js';
+import Bar from '@/components/BarChart.js'
 
 export default {
 	name: 'Dashboard',
+	components: {
+    Bar
+	},
+	data() {
+		return {
+			companies: this.$store.state.companies,
+			datacollection: null,
+			options: null
+		}
+	},
+  watch: {
+		companies: function(fresh) {
+      this.fillData(fresh)
+		}
+  },
 	computed: {
 		allPrivacyViolations() {
 			const allPrivacyViolations = [];
@@ -49,7 +72,35 @@ export default {
 		},
 	},
   methods: {
-    formatMoney
+    formatMoney,
+    fillData: function(companies) {
+      this.datacollection = this.formatDataForChart(companies);
+    },
+    formatDataForChart: function(companies) {
+     const dataSet = [];
+     companies.forEach(company => {
+        let privacyViolationsAmount = 0;
+        company.privacyViolation.forEach(violation => {
+					privacyViolationsAmount += violation.amount;
+        });
+
+        dataSet.push({
+          label: company.name,
+          totalAmount: privacyViolationsAmount
+        })
+      });
+
+			dataSet.sort(function(a,b){return b.totalAmount - a.totalAmount})
+      const top10 = dataSet.slice(0, 9);
+			return {
+				labels: top10.map(company => company.label),
+				datasets: [{
+					label: 'Top 10 Privacy Violators',
+					backgroundColor: '#21c6ce',
+					data: top10.map(company => company.totalAmount)
+				}]
+			};
+    },
   }
 };
 </script>
@@ -69,7 +120,7 @@ export default {
 		display: flex;
 		justify-content: space-between;
 		flex-wrap: wrap;
-		padding: 3rem 0;
+		padding: 1rem 0;
 
 		.general-info-card {
 			border-radius: 1rem;
@@ -77,6 +128,19 @@ export default {
 			padding: 2rem;
 			margin: 1rem;
 			background-color: white;
+		}
+	}
+	
+	.chart-container {
+		margin: 2rem 0;
+		
+		p {
+			margin: 2rem 0;
+		}
+
+		.chart {
+			max-width: 80%;
+			margin:  2rem auto;
 		}
 	}
 }
