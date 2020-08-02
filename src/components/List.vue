@@ -1,5 +1,5 @@
 <template>
-  <div id="list" v-if="companies">
+  <div id="list" v-if="companies.length">
     <h2>Companies</h2>
     <ExportCSV :jsonData="companies" :formatFn="formatJson" />
     <div class="list-container">

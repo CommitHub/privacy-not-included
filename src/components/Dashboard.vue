@@ -24,13 +24,24 @@
 				<p class="subtext">Total Amount Paid</p>
 			</div>
 		</section>
-		<section class="chart-container">
-			<h3>Top 10 Privacy Violators</h3>
-			<p>The data is calculated on the total amount of violations accrued. Below you can search for each company and see the details</p>
-			<div class="chart">
-				<bar v-if="datacollection" :chart-data="datacollection" :chart-options="options"></bar>
-			</div>
-		</section>
+		<div class="charts-container">
+			<section class="chart-container">
+				<h3>Top 10 Privacy Violators</h3>
+				<div class="chart">
+					<bar v-if="datacollection" :chart-data="datacollection" :chart-options="options"></bar>
+				</div>
+				<div class="insight">
+					<div class="insight-header">
+						<font-awesome-icon 
+							class="lightbulb"
+							:icon="['far', 'lightbulb']" 
+						/>
+						<h4>Insight</h4>
+					</div>
+					<p class="subtext">The data is calculated on the total amount of violation fines.</p>
+				</div>
+			</section>
+		</div>
 	</section>
 </template>
 
@@ -120,7 +131,6 @@ export default {
 		display: flex;
 		justify-content: space-between;
 		flex-wrap: wrap;
-		padding: 1rem 0;
 
 		.general-info-card {
 			border-radius: 1rem;
@@ -130,18 +140,47 @@ export default {
 			background-color: white;
 		}
 	}
-	
-	.chart-container {
-		margin: 2rem 0;
-		
-		p {
-			margin: 2rem 0;
-		}
 
-		.chart {
-			max-width: 80%;
-			margin:  2rem auto;
+	.charts-container {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+
+		.chart-container {
+			border-radius: 1rem;
+			flex: 1;
+			padding: 2rem;
+			margin: 1rem;
+			background-color: white;
+
+			.chart {
+				max-width: 40%;
+				margin: 2rem 0;
+
+				@media (max-width: $tablet-sm) {
+					max-width: 80%;
+					margin: 4rem 0;
+				}
+			}
+
+			.insight-header {
+				display: flex;
+				align-items: center;
+
+				.lightbulb {
+					background-color: $main-color;
+					border-radius: 50%;
+					padding: 1.2rem;
+					margin: 1rem 1rem 1rem 0;
+					color: white;
+				}
+
+				h4 {
+					color: $main-color;
+				}
+			}
 		}
 	}
+	
 }
 </style>
