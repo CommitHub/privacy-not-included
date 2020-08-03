@@ -1,5 +1,7 @@
 # privacy-not-included
 
+A site centered around privacy displaying problems that companies face e.g. privacy violations that companies have incurred.
+
 ## Project setup
 ```
 yarn install
@@ -20,5 +22,6 @@ yarn build
 yarn lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Public Trello Board
+
+[Trello Board](https://trello.com/b/YSicFAdd/privacy-not-included)
