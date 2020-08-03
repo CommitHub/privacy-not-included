@@ -1,5 +1,5 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
+import Vue from "vue";
+import Vuex from "vuex";
 
 import db from "../firebase/firebaseInit.js";
 
@@ -10,7 +10,7 @@ const store = new Vuex.Store({
     companies: []
   },
   mutations: {
-    getCompaniesData (state) {
+    getCompaniesData(state) {
       db.collection("companies")
         .get()
         .then(querySnapshot => {
@@ -21,9 +21,11 @@ const store = new Vuex.Store({
               logo: doc.data().logo,
               name: doc.data().name,
               privacyViolation: doc.data().privacy_violation,
-              totalAmount: doc.data().privacy_violation.reduce((acc, violation) => {
-                return acc + violation.amount
-              }, 0),
+              totalAmount: doc
+                .data()
+                .privacy_violation.reduce((acc, violation) => {
+                  return acc + violation.amount;
+                }, 0),
               totalViolations: doc.data().privacy_violation.length
             };
 

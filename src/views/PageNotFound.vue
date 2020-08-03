@@ -4,7 +4,9 @@
     <div class="info-container">
       <h1>404</h1>
       <h2 class="subtext">Oops! The page you are looking for doesn't exist</h2>
-      <button class="btn-main"><router-link to="/">Go Home</router-link></button>
+      <button class="btn-main">
+        <router-link to="/">Go Home</router-link>
+      </button>
     </div>
   </div>
 </template>
