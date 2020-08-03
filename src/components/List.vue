@@ -3,11 +3,7 @@
     <h2>Companies</h2>
     <ExportCSV :jsonData="companies" :formatFn="formatJson" />
     <div class="list-container">
-      <section
-        class="card"
-        v-for="company in companies"
-        :key="company.id"
-      >
+      <section class="card" v-for="company in companies" :key="company.id">
         <img :src="company.logo" v-bind:alt="company.name" />
         <h2>{{ company.name }}</h2>
         <span></span>
@@ -15,7 +11,9 @@
           <p>Total Privacy Violations: {{ company.totalViolations }}</p>
           <p>Total Amount: {{ formatMoney(company.totalAmount) }}</p>
         </section>
-        <router-link :to="{ name: 'company', params: { id: company.id }}">Details</router-link>
+        <router-link :to="{ name: 'company', params: { id: company.id } }"
+          >Details</router-link
+        >
       </section>
     </div>
   </div>
@@ -23,16 +21,16 @@
 
 <script>
 import ExportCSV from "@/components/ExportCSV.vue";
-import formatMoney from '../helpers/format-money.js';
+import formatMoney from "../helpers/format-money.js";
 
 export default {
-  name: 'List',
+  name: "List",
   components: {
     ExportCSV
   },
   data() {
     return {
-      companies: this.$store.state.companies,
+      companies: this.$store.state.companies
     };
   },
   methods: {
@@ -51,23 +49,22 @@ export default {
         });
       });
 
-      return formattedData
+      return formattedData;
     }
   }
 };
-
 </script>
 
 <style lang="scss">
 @import "../styles/variables.scss";
 
 #list {
-   padding: 2rem;
-   margin-top: 1rem;
+  padding: 2rem;
+  margin-top: 1rem;
 
-   h2 {
+  h2 {
     margin: 4rem 0;
-   }
+  }
 
   .list-container {
     display: flex;
@@ -81,7 +78,7 @@ export default {
     border-radius: 2rem;
     background-color: white;
     width: 30%;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
     display: flex;
     flex-direction: column;
@@ -89,7 +86,7 @@ export default {
     align-items: center;
 
     &:hover {
-      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     }
 
     @media (max-width: $desktop-sm) {
