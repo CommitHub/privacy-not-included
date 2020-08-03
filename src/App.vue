@@ -9,14 +9,14 @@
 import Footer from "@/components/Footer.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Footer
   },
   created() {
-    this.$store.commit('getCompaniesData');
+    this.$store.commit("getCompaniesData");
   }
-}
+};
 </script>
 
 <style lang="scss">
@@ -26,7 +26,7 @@ export default {
 @import "./styles/reset.scss";
 
 #app {
-  font-family: 'Arvo', serif;
+  font-family: "Arvo", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: $main-font-color;
@@ -58,11 +58,11 @@ export default {
   }
 
   h5 {
-    font-size: .86em;
+    font-size: 0.86em;
   }
 
   h6 {
-    font-size: .67em;
+    font-size: 0.67em;
   }
 
   button {

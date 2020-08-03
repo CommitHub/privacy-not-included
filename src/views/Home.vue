@@ -1,13 +1,21 @@
 <template>
   <div id="home">
     <header>
-      <img class="logo" src="@/assets/images/logo.png" alt="security lock logo" />
+      <img
+        class="logo"
+        src="@/assets/images/logo.png"
+        alt="security lock logo"
+      />
       <h1>Privacy Not Included</h1>
     </header>
     <section class="jumbotron">
       <div class="description-container">
         <h2>Security should be the focus of every company</h2>
-        <p>Companies have been selling our data for a while with no concern to our privacy. The intention of this site is to bring that information in a digestible form to the people.</p>
+        <p>
+          Companies have been selling our data for a while with no concern to
+          our privacy. The intention of this site is to bring that information
+          in a digestible form to the people.
+        </p>
       </div>
       <img src="@/assets/images/team-work.png" />
     </section>
@@ -24,7 +32,7 @@ export default {
   name: "home",
   components: {
     Dashboard,
-    List,
+    List
   }
 };
 </script>
@@ -81,5 +89,4 @@ export default {
     }
   }
 }
-
 </style>

@@ -1,21 +1,20 @@
 <template>
   <div class="export-to-csv">
-    <button class="btn-main" v-on:click="csvExport(data, cb)">Export to CSV</button>
+    <button class="btn-main" v-on:click="csvExport(data, cb)">
+      Export to CSV
+    </button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ExportCSV',
-  props: [
-    'jsonData',
-    'formatFn'
-  ],
+  name: "ExportCSV",
+  props: ["jsonData", "formatFn"],
   data() {
     return {
       data: this.jsonData,
       cb: this.formatFn
-    } 
+    };
   },
   methods: {
     csvExport(jsonData, cb) {
@@ -33,7 +32,7 @@ export default {
       link.setAttribute("href", data);
       link.setAttribute("download", "export.csv");
       link.click();
-    },
+    }
   }
 };
 </script>
