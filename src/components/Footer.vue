@@ -1,9 +1,9 @@
 <template>
   <div id="footer">
     <p>
-      Made with 💖 by Luis Alvarez
-      <a href="https://luis-alvarez.dev" target="_blank" rel="noopener">
-        (Portfolio)
+      Made with 💖 by
+      <a href="https://commithub.com" target="_blank" rel="noopener">
+        CommitHub
       </a>
     </p>
   </div>
