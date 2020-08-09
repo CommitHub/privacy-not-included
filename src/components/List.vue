@@ -1,7 +1,11 @@
 <template>
   <div id="list" v-if="companies.length">
     <h2>Companies</h2>
-    <ExportCSV :jsonData="companies" :formatFn="formatJson" />
+    <ExportCSV :exportData="formattedCompanies" />
+    <div class="search-wrapper">
+      <input type="text" v-model="search" placeholder="Search title.." />
+      <label>Search title:</label>
+    </div>
     <div class="list-container">
       <section class="card" v-for="company in companies" :key="company.id">
         <img :src="company.logo" v-bind:alt="company.name" />
@@ -30,12 +34,22 @@ export default {
   },
   data() {
     return {
-      companies: this.$store.state.companies
+      search: ""
     };
+  },
+  computed: {
+    companies() {
+      return this.$store.state.companies;
+    },
+    formattedCompanies() {
+      return this.formatJson(this.$store.state.companies);
+    }
   },
   methods: {
     formatMoney,
     formatJson: function(companies) {
+      if (!companies && !companies.length) return null;
+
       const formattedData = [];
       companies.forEach(company => {
         company.privacyViolation.forEach(violation => {

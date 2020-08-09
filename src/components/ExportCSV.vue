@@ -1,6 +1,6 @@
 <template>
   <div class="export-to-csv">
-    <button class="btn-main" v-on:click="csvExport(data, cb)">
+    <button class="btn-main" v-on:click="csvExport(data)">
       Export to CSV
     </button>
   </div>
@@ -9,16 +9,15 @@
 <script>
 export default {
   name: "ExportCSV",
-  props: ["jsonData", "formatFn"],
+  props: ["exportData"],
   data() {
     return {
-      data: this.jsonData,
-      cb: this.formatFn
+      data: this.exportData
     };
   },
   methods: {
-    csvExport(jsonData, cb) {
-      const formattedData = cb(jsonData);
+    csvExport(exportData) {
+      const formattedData = exportData;
       let csvContent = "data:text/csv;charset=utf-8,";
       csvContent += [
         Object.keys(formattedData[0]).join(";"),
