@@ -2,12 +2,17 @@
   <div id="list" v-if="companies.length">
     <h2>Companies</h2>
     <ExportCSV :exportData="formattedCompanies" />
-    <div class="search-wrapper">
-      <input type="text" v-model="search" placeholder="Search title.." />
-      <label>Search title:</label>
+    <div class="search-container">
+      <label for="search-bar" class="hidden">Search Company:</label>
+      <input
+        type="text"
+        v-model="search"
+        placeholder="Search Company"
+        name="search-bar"
+      />
     </div>
     <div class="list-container">
-      <section class="card" v-for="company in companies" :key="company.id">
+      <section class="card" v-for="company in resultQuery" :key="company.id">
         <img :src="company.logo" v-bind:alt="company.name" />
         <h2>{{ company.name }}</h2>
         <span></span>
@@ -43,6 +48,15 @@ export default {
     },
     formattedCompanies() {
       return this.formatJson(this.$store.state.companies);
+    },
+    resultQuery() {
+      if (this.search) {
+        return this.$store.state.companies.filter(company => {
+          return company.name.toLowerCase().includes(this.search.toLowerCase());
+        });
+      } else {
+        return this.$store.state.companies;
+      }
     }
   },
   methods: {
@@ -78,6 +92,17 @@ export default {
 
   h2 {
     margin: 4rem 0;
+  }
+
+  .search-container {
+    display: flex;
+    margin: 2rem 0;
+    align-items: center;
+
+    input {
+      flex: 1;
+      padding: 1rem;
+    }
   }
 
   .list-container {
