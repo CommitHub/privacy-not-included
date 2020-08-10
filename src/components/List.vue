@@ -103,14 +103,16 @@ export default {
 
   .search-container {
     display: flex;
+    flex-wrap: wrap;
     margin: 2rem 0;
     align-items: center;
 
     .search-input {
       display: flex;
+      align-items: center;
       flex: 1;
-      margin: 0 1rem 0 0;
-      padding: 1rem 2rem;
+      margin: 2rem 1rem 2rem 0;
+      padding: 1rem;
       border-radius: 1rem;
       border: none;
       background-color: $main-grey;
