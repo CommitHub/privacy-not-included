@@ -180,7 +180,7 @@ export default {
 
 #dashboard {
   padding: 2rem;
-  background-color: $background-color-list;
+  background-color: $main-grey;
 
   @media (max-width: $tablet-sm) {
     padding: 2rem 0;

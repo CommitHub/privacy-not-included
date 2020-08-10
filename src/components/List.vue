@@ -1,9 +1,22 @@
 <template>
   <div id="list" v-if="companies.length">
     <h2>Companies</h2>
-    <ExportCSV :jsonData="companies" :formatFn="formatJson" />
+    <ExportCSV :exportData="formattedCompanies" />
+    <div class="search-container">
+      <label for="search-bar" class="hidden">Search Company:</label>
+      <div class="search-input">
+        <font-awesome-icon :icon="['fas', 'search']" />
+        <input
+          type="text"
+          v-model="search"
+          placeholder="Search Company..."
+          name="search-bar"
+        />
+      </div>
+      <button class="btn-main" v-on:click="clearSearch()">Clear</button>
+    </div>
     <div class="list-container">
-      <section class="card" v-for="company in companies" :key="company.id">
+      <section class="card" v-for="company in resultQuery" :key="company.id">
         <img :src="company.logo" v-bind:alt="company.name" />
         <h2>{{ company.name }}</h2>
         <span></span>
@@ -30,12 +43,31 @@ export default {
   },
   data() {
     return {
-      companies: this.$store.state.companies
+      search: ""
     };
+  },
+  computed: {
+    companies() {
+      return this.$store.state.companies;
+    },
+    formattedCompanies() {
+      return this.formatJson(this.$store.state.companies);
+    },
+    resultQuery() {
+      if (this.search) {
+        return this.$store.state.companies.filter(company => {
+          return company.name.toLowerCase().includes(this.search.toLowerCase());
+        });
+      } else {
+        return this.$store.state.companies;
+      }
+    }
   },
   methods: {
     formatMoney,
     formatJson: function(companies) {
+      if (!companies && !companies.length) return null;
+
       const formattedData = [];
       companies.forEach(company => {
         company.privacyViolation.forEach(violation => {
@@ -50,6 +82,9 @@ export default {
       });
 
       return formattedData;
+    },
+    clearSearch: function() {
+      this.search = "";
     }
   }
 };
@@ -64,6 +99,32 @@ export default {
 
   h2 {
     margin: 4rem 0;
+  }
+
+  .search-container {
+    display: flex;
+    margin: 2rem 0;
+    align-items: center;
+
+    .search-input {
+      display: flex;
+      flex: 1;
+      margin: 0 1rem 0 0;
+      padding: 1rem 2rem;
+      border-radius: 1rem;
+      border: none;
+      background-color: $main-grey;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      font-size: 1.3rem;
+
+      input {
+        flex: 1;
+        margin: 0 1rem;
+        font-size: 1.3rem;
+        border: none;
+        background-color: $main-grey;
+      }
+    }
   }
 
   .list-container {
