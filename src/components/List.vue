@@ -13,7 +13,7 @@
           name="search-bar"
         />
       </div>
-      <button class="btn-main" v-on:click="clearSearch()">Cancel</button>
+      <button class="btn-main" v-on:click="clearSearch()">Clear</button>
     </div>
     <div class="list-container">
       <section class="card" v-for="company in resultQuery" :key="company.id">
