@@ -4,12 +4,15 @@
     <ExportCSV :exportData="formattedCompanies" />
     <div class="search-container">
       <label for="search-bar" class="hidden">Search Company:</label>
-      <input
-        type="text"
-        v-model="search"
-        placeholder="Search Company"
-        name="search-bar"
-      />
+      <div class="search-input">
+        <font-awesome-icon :icon="['fas', 'search']" />
+        <input
+          type="text"
+          v-model="search"
+          placeholder="Search Company..."
+          name="search-bar"
+        />
+      </div>
       <button class="btn-main" v-on:click="clearSearch()">Cancel</button>
     </div>
     <div class="list-container">
@@ -103,7 +106,8 @@ export default {
     margin: 2rem 0;
     align-items: center;
 
-    input {
+    .search-input {
+      display: flex;
       flex: 1;
       margin: 0 1rem 0 0;
       padding: 1rem 2rem;
@@ -112,6 +116,14 @@ export default {
       background-color: $main-grey;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
       font-size: 1.3rem;
+
+      input {
+        flex: 1;
+        margin: 0 1rem;
+        font-size: 1.3rem;
+        border: none;
+        background-color: $main-grey;
+      }
     }
   }
 
