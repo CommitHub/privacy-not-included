@@ -10,6 +10,7 @@
         placeholder="Search Company"
         name="search-bar"
       />
+      <button class="btn-main" v-on:click="clearSearch()">Cancel</button>
     </div>
     <div class="list-container">
       <section class="card" v-for="company in resultQuery" :key="company.id">
@@ -78,6 +79,9 @@ export default {
       });
 
       return formattedData;
+    },
+    clearSearch: function() {
+      this.search = "";
     }
   }
 };
@@ -101,7 +105,13 @@ export default {
 
     input {
       flex: 1;
-      padding: 1rem;
+      margin: 0 1rem 0 0;
+      padding: 1rem 2rem;
+      border-radius: 1rem;
+      border: none;
+      background-color: $main-grey;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      font-size: 1.3rem;
     }
   }
 

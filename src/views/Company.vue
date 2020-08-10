@@ -113,11 +113,11 @@ export default {
     }
 
     tr {
-      border-bottom: 0.2rem solid darken($background-color-list, 5%);
+      border-bottom: 0.2rem solid darken($main-grey, 5%);
     }
 
     tr:nth-child(even) {
-      background-color: $background-color-list;
+      background-color: $main-grey;
     }
   }
 }
