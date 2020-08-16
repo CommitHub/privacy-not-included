@@ -69,9 +69,6 @@ export default {
   },
   data() {
     return {
-      companies: this.$store.state.companies,
-      dataCollectionForFines: null,
-      dataCollectionForViolationAmount: null,
       options: null
     };
   },
@@ -81,6 +78,9 @@ export default {
     }
   },
   computed: {
+    companies() {
+      return this.$store.state.companies;
+    },
     allPrivacyViolations() {
       const allPrivacyViolations = [];
       this.$store.state.companies.forEach(company =>
@@ -103,16 +103,16 @@ export default {
     },
     totalViolations() {
       return this.allPrivacyViolations.length;
+    },
+    dataCollectionForFines() {
+      return this.formatDataForFineAmount(this.$store.state.companies);
+    },
+    dataCollectionForViolationAmount() {
+      return this.formatDataForViolationAmount(this.$store.state.companies);
     }
   },
   methods: {
     formatMoney,
-    fillData: function(companies) {
-      this.dataCollectionForFines = this.formatDataForFineAmount(companies);
-      this.dataCollectionForViolationAmount = this.formatDataForViolationAmount(
-        companies
-      );
-    },
     formatDataForFineAmount: function(companies) {
       const dataSet = [];
       companies.forEach(company => {
