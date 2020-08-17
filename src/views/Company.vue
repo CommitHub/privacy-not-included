@@ -1,7 +1,6 @@
 <template>
   <div id="company">
     <div v-if="company">
-      <router-link class="nav" to="/">Home</router-link>
       <h1>{{ company.name }}</h1>
       <img :src="company.logo" v-bind:alt="company.name" />
       <p>{{ company.description }}</p>
@@ -77,12 +76,6 @@ export default {
   padding: 2rem;
   width: 80%;
   margin: 0 auto;
-
-  .nav {
-    display: block;
-    margin-bottom: 2rem;
-    color: black;
-  }
 
   h1 {
     margin-bottom: 2rem;
