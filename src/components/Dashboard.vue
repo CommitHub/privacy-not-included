@@ -69,18 +69,13 @@ export default {
   },
   data() {
     return {
-      companies: this.$store.state.companies,
-      dataCollectionForFines: null,
-      dataCollectionForViolationAmount: null,
       options: null
     };
   },
-  watch: {
-    companies: function(fresh) {
-      this.fillData(fresh);
-    }
-  },
   computed: {
+    companies() {
+      return this.$store.state.companies;
+    },
     allPrivacyViolations() {
       const allPrivacyViolations = [];
       this.$store.state.companies.forEach(company =>
@@ -103,16 +98,16 @@ export default {
     },
     totalViolations() {
       return this.allPrivacyViolations.length;
+    },
+    dataCollectionForFines() {
+      return this.formatDataForFineAmount(this.$store.state.companies);
+    },
+    dataCollectionForViolationAmount() {
+      return this.formatDataForViolationAmount(this.$store.state.companies);
     }
   },
   methods: {
     formatMoney,
-    fillData: function(companies) {
-      this.dataCollectionForFines = this.formatDataForFineAmount(companies);
-      this.dataCollectionForViolationAmount = this.formatDataForViolationAmount(
-        companies
-      );
-    },
     formatDataForFineAmount: function(companies) {
       const dataSet = [];
       companies.forEach(company => {
@@ -246,11 +241,11 @@ export default {
 
         .lightbulb {
           margin: 1rem 1rem 1rem 0;
-          color: $main-color;
+          color: $brand-color;
         }
 
         h4 {
-          color: $main-color;
+          color: $brand-color;
         }
       }
     }

@@ -103,6 +103,7 @@ export default {
 
   .search-container {
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
     margin: 2rem 0;
     align-items: center;
@@ -110,8 +111,8 @@ export default {
     .search-input {
       display: flex;
       align-items: center;
-      flex: 1;
-      margin: 2rem 1rem 2rem 0;
+      width: 85%;
+      margin: 2rem 0;
       padding: 1rem;
       border-radius: 1rem;
       border: none;
@@ -120,7 +121,7 @@ export default {
       font-size: 1.3rem;
 
       input {
-        flex: 1;
+        width: 90%;
         margin: 0 1rem;
         font-size: 1.3rem;
         border: none;
@@ -172,7 +173,7 @@ export default {
 
     span {
       width: 80%;
-      border-top: 0.2rem solid $main-color;
+      border-top: 0.2rem solid $brand-color;
     }
 
     .content {

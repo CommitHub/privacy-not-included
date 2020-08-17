@@ -1,17 +1,20 @@
 <template>
   <div id="app">
-    <router-view />
+    <Navbar />
+    <router-view class="view" />
     <Footer />
   </div>
 </template>
 
 <script>
 import Footer from "@/components/Footer.vue";
+import Navbar from "@/components/Navbar.vue";
 
 export default {
   name: "App",
   components: {
-    Footer
+    Footer,
+    Navbar
   },
   created() {
     this.$store.commit("getCompaniesData");
@@ -68,6 +71,10 @@ export default {
   button {
     font-size: 1.3em;
     cursor: pointer;
+  }
+
+  .view {
+    margin-top: 6rem;
   }
 }
 </style>
