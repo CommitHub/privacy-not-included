@@ -75,7 +75,7 @@ export default {
       }
 
       h2 {
-        color: $main-color;
+        color: $brand-color;
         margin: 1rem 0;
       }
     }

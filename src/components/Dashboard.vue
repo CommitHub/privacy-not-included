@@ -72,11 +72,6 @@ export default {
       options: null
     };
   },
-  watch: {
-    companies: function(fresh) {
-      this.fillData(fresh);
-    }
-  },
   computed: {
     companies() {
       return this.$store.state.companies;
@@ -246,11 +241,11 @@ export default {
 
         .lightbulb {
           margin: 1rem 1rem 1rem 0;
-          color: $main-color;
+          color: $brand-color;
         }
 
         h4 {
-          color: $main-color;
+          color: $brand-color;
         }
       }
     }
