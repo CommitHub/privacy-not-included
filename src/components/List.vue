@@ -173,7 +173,7 @@ export default {
 
     span {
       width: 80%;
-      border-top: 0.2rem solid $main-color;
+      border-top: 0.2rem solid $brand-color;
     }
 
     .content {
