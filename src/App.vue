@@ -1,20 +1,26 @@
 <template>
-  <div id="app">
-    <Navbar />
+  <v-app id="app">
+    <v-app-bar fixed color="primary" light>
+      <v-toolbar-title>Privacy Not Included</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn icon>
+        <router-link to="/">
+          <v-icon class="nav-icon">fas fa-home</v-icon>
+        </router-link>
+      </v-btn>
+    </v-app-bar>
     <router-view class="view" />
     <Footer />
-  </div>
+  </v-app>
 </template>
 
 <script>
 import Footer from "@/components/Footer.vue";
-import Navbar from "@/components/Navbar.vue";
 
 export default {
   name: "App",
   components: {
-    Footer,
-    Navbar
+    Footer
   },
   created() {
     this.$store.commit("getCompaniesData");
@@ -74,6 +80,10 @@ export default {
 
   .view {
     margin-top: 6rem;
+  }
+
+  .nav-icon {
+    color: $font-color-dark;
   }
 }
 </style>
