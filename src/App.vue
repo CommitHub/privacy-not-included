@@ -31,7 +31,7 @@ export default {
   font-family: "Arvo", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: $main-font-color;
+  color: $font-color-dark;
   font-size: 1.3em;
   word-spacing: 1px;
 

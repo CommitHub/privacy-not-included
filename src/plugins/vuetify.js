@@ -11,13 +11,14 @@ export default new Vuetify({
     },
     themes: {
       light: {
-        primary: "#ee44aa",
+        // Colors are taken from the design system for CommitHub
+        primary: "#3282B8",
         secondary: "#424242",
-        accent: "#82B1FF",
-        error: "#FF5252",
+        accent: "#21C6CE",
+        error: "#C72C41", // danger
         info: "#2196F3",
-        success: "#4CAF50",
-        warning: "#FFC107"
+        success: "#29C7AC",
+        warning: "#FFBF00"
       }
     }
   },

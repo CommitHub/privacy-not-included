@@ -20,7 +20,7 @@ nav {
   border-bottom: 0.2rem solid darken($main-grey, 20%) !important;
 
   a {
-    color: $main-font-color;
+    color: $font-color-dark;
     margin: 0 1rem;
     font-size: 2em;
   }

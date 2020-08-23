@@ -173,7 +173,7 @@ export default {
 
     span {
       width: 80%;
-      border-top: 0.2rem solid $brand-color;
+      border-top: 0.2rem solid $accent;
     }
 
     .content {
@@ -186,7 +186,7 @@ export default {
 
     a {
       color: white;
-      background-color: $normal;
+      background-color: $primary;
       border-radius: 0 0 2rem 2rem;
       width: 100%;
       padding: 1.5rem 0;

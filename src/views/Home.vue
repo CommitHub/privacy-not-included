@@ -75,7 +75,7 @@ export default {
       }
 
       h2 {
-        color: $brand-color;
+        color: $accent;
         margin: 1rem 0;
       }
     }

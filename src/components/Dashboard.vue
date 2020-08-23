@@ -241,11 +241,11 @@ export default {
 
         .lightbulb {
           margin: 1rem 1rem 1rem 0;
-          color: $brand-color;
+          color: $accent;
         }
 
         h4 {
-          color: $brand-color;
+          color: $accent;
         }
       }
     }
