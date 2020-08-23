@@ -7,6 +7,9 @@ import { faLightbulb } from "@fortawesome/free-regular-svg-icons";
 import { faSearch, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faFontAwesome } from "@fortawesome/free-brands-svg-icons";
+import vuetify from "./plugins/vuetify";
+import "roboto-fontface/css/roboto/roboto-fontface.css";
+import "@fortawesome/fontawesome-free/css/all.css";
 
 library.add(faLightbulb);
 library.add(faSearch);
@@ -19,5 +22,6 @@ Vue.config.productionTip = false;
 new Vue({
   router,
   render: h => h(App),
+  vuetify,
   store: store
 }).$mount("#app");
