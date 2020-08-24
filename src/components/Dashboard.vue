@@ -27,7 +27,7 @@
         </div>
         <div class="insight">
           <div class="insight-header">
-            <font-awesome-icon class="lightbulb" :icon="['far', 'lightbulb']" />
+            <v-icon class="lightbulb">far fa-lightbulb</v-icon>
             <h4>Insight</h4>
           </div>
           <p class="subtext">
@@ -46,7 +46,7 @@
         </div>
         <div class="insight">
           <div class="insight-header">
-            <font-awesome-icon class="lightbulb" :icon="['far', 'lightbulb']" />
+            <v-icon class="lightbulb">far fa-lightbulb</v-icon>
             <h4>Insight</h4>
           </div>
           <p class="subtext">

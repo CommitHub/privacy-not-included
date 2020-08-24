@@ -5,7 +5,7 @@
     <div class="search-container">
       <label for="search-bar" class="hidden">Search Company:</label>
       <div class="search-input">
-        <font-awesome-icon :icon="['fas', 'search']" />
+        <v-icon>fas fa-search</v-icon>
         <input
           type="text"
           v-model="search"
