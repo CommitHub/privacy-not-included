@@ -8,7 +8,7 @@
 
 .subtext {
 	line-height: 1.4;
-	color: lighten($main-font-color, 30%);
+	color: lighten($font-color-dark, 30%);
 	font-size: 1em;
 
   @media (max-width: $desktop-sm) {
@@ -18,7 +18,7 @@
 
 .btn-main {
   color: white;
-  background-color: $normal;
+  background-color: $primary;
   border-radius: 2rem;
   border: none;
   padding: 1rem 2rem;
@@ -26,7 +26,7 @@
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 
   &:hover {
-    background-color: darken($color:$normal, $amount: 10%);
+    background-color: darken($color:$primary, $amount: 10%);
   }
 
   a {

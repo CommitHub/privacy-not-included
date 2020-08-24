@@ -3,17 +3,17 @@
     <h2>Companies</h2>
     <ExportCSV :exportData="formattedCompanies" />
     <div class="search-container">
-      <label for="search-bar" class="hidden">Search Company:</label>
-      <div class="search-input">
-        <font-awesome-icon :icon="['fas', 'search']" />
-        <input
-          type="text"
-          v-model="search"
-          placeholder="Search Company..."
-          name="search-bar"
-        />
-      </div>
-      <button class="btn-main" v-on:click="clearSearch()">Clear</button>
+      <v-text-field
+        type="text"
+        v-model="search"
+        placeholder="Search Company..."
+        name="search-bar"
+        append-icon="fas fa-search"
+        filled
+      />
+      <v-btn rounded color="primary" x-large v-on:click="clearSearch()"
+        >Clear</v-btn
+      >
     </div>
     <div class="list-container">
       <section class="card" v-for="company in resultQuery" :key="company.id">
@@ -102,31 +102,10 @@ export default {
   }
 
   .search-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
     margin: 2rem 0;
-    align-items: center;
 
     .search-input {
-      display: flex;
-      align-items: center;
-      width: 85%;
       margin: 2rem 0;
-      padding: 1rem;
-      border-radius: 1rem;
-      border: none;
-      background-color: $main-grey;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-      font-size: 1.3rem;
-
-      input {
-        width: 90%;
-        margin: 0 1rem;
-        font-size: 1.3rem;
-        border: none;
-        background-color: $main-grey;
-      }
     }
   }
 
@@ -173,7 +152,7 @@ export default {
 
     span {
       width: 80%;
-      border-top: 0.2rem solid $brand-color;
+      border-top: 0.2rem solid $accent;
     }
 
     .content {
@@ -186,7 +165,7 @@ export default {
 
     a {
       color: white;
-      background-color: $normal;
+      background-color: $primary;
       border-radius: 0 0 2rem 2rem;
       width: 100%;
       padding: 1.5rem 0;

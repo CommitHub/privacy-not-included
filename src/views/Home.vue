@@ -1,13 +1,5 @@
 <template>
   <div id="home">
-    <header>
-      <img
-        class="logo"
-        src="@/assets/images/logo.png"
-        alt="security lock logo"
-      />
-      <h1>Privacy Not Included</h1>
-    </header>
     <section class="jumbotron">
       <div class="description-container">
         <h2>Security should be the focus of every company</h2>
@@ -41,26 +33,6 @@ export default {
 @import "../styles/variables.scss";
 
 #home {
-  header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 2rem 0;
-
-    .logo {
-      margin: 0 1rem;
-      width: 2%;
-
-      @media (max-width: $mobile-lg) {
-        width: 10%;
-      }
-
-      @media (max-width: $mobile-sm) {
-        width: 20%;
-      }
-    }
-  }
-
   .jumbotron {
     display: flex;
     justify-content: space-around;
@@ -75,7 +47,7 @@ export default {
       }
 
       h2 {
-        color: $brand-color;
+        color: $accent;
         margin: 1rem 0;
       }
     }

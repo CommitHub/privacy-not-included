@@ -27,7 +27,7 @@
         </div>
         <div class="insight">
           <div class="insight-header">
-            <font-awesome-icon class="lightbulb" :icon="['far', 'lightbulb']" />
+            <v-icon class="lightbulb">far fa-lightbulb</v-icon>
             <h4>Insight</h4>
           </div>
           <p class="subtext">
@@ -46,7 +46,7 @@
         </div>
         <div class="insight">
           <div class="insight-header">
-            <font-awesome-icon class="lightbulb" :icon="['far', 'lightbulb']" />
+            <v-icon class="lightbulb">far fa-lightbulb</v-icon>
             <h4>Insight</h4>
           </div>
           <p class="subtext">
@@ -241,11 +241,11 @@ export default {
 
         .lightbulb {
           margin: 1rem 1rem 1rem 0;
-          color: $brand-color;
+          color: $accent;
         }
 
         h4 {
-          color: $brand-color;
+          color: $accent;
         }
       }
     }
