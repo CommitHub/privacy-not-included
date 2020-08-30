@@ -40,6 +40,7 @@ export default {
   color: $font-color-dark;
   font-size: 1.3em;
   word-spacing: 1px;
+  background-color: $main-background-color-light;
 
   @media (max-width: $desktop-sm) {
     font-size: 1em;
