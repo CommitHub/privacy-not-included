@@ -1,8 +1,8 @@
 <template>
   <div class="export-to-csv">
-    <button class="btn-main" v-on:click="csvExport(data)">
-      Export to CSV
-    </button>
+    <v-btn rounded color="primary" x-large v-on:click="csvExport(data)"
+      >Export to CSV</v-btn
+    >
   </div>
 </template>
 
@@ -35,3 +35,10 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+.export-to-csv {
+  button {
+    text-decoration: underline;
+  }
+}
+</style>
