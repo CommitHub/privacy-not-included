@@ -2,69 +2,31 @@
   <div id="company">
     <div v-if="company">
       <h1>{{ company.name }}</h1>
-      <img :src="company.logo" v-bind:alt="company.name" />
-      <p>{{ company.description }}</p>
-      <div class="table-container">
-        <table>
-          <tr>
-            <th>Amount</th>
-            <th>Year</th>
-            <th>Descriptions</th>
-            <th>Source</th>
-          </tr>
-          <tr
-            v-for="violation in company.privacyViolation"
-            :key="violation.amount"
-          >
-            <td>
-              {{
-                formatMoney(violation.amount) ||
-                  "Amount is not available at this time"
-              }}
-            </td>
-            <td>
-              {{ violation.year || "Year is not available at this time" }}
-            </td>
-            <td>
-              {{
-                violation.description ||
-                  "Description is not available at this time"
-              }}
-            </td>
-            <td>
-              <a
-                v-if="violation.source"
-                v-bind:href="violation.source"
-                target="_blank"
-                rel="noopener"
-              >
-                {{ violation.source }}
-              </a>
-              <p v-if="!violation.source">
-                Source is not available at this time
-              </p>
-            </td>
-          </tr>
-        </table>
-      </div>
+      <img :src="company.logo" :alt="company.name" />
+      <p class="description">{{ company.description }}</p>
+      <ViolationCard
+        v-for="(violation, index) in company.privacyViolation"
+        :key="index"
+        :violation="violation"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import formatMoney from "../helpers/format-money.js";
+import ViolationCard from "@/components/ViolationCard.vue";
 
 export default {
   name: "Company",
+  components: {
+    ViolationCard
+  },
   computed: {
     company() {
       return this.$store.state.companies.filter(
         company => company.id === this.$route.params.id
       )[0];
     }
-  },
-  methods: {
-    formatMoney
   }
 };
 </script>
@@ -88,30 +50,8 @@ export default {
     margin: 0 auto;
   }
 
-  p {
+  .description {
     margin: 3rem 0;
-  }
-
-  .table-container {
-    overflow-x: auto;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
-    table {
-      max-width: 100%;
-    }
-
-    th,
-    td {
-      padding: 1rem;
-    }
-
-    tr {
-      border-bottom: 0.2rem solid darken($main-grey, 5%);
-    }
-
-    tr:nth-child(even) {
-      background-color: $main-grey;
-    }
   }
 }
 </style>

@@ -79,6 +79,10 @@ export default {
     cursor: pointer;
   }
 
+  a {
+    color: $font-color-dark;
+  }
+
   .view {
     margin-top: 6rem;
   }
