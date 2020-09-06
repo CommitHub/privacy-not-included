@@ -84,7 +84,7 @@ export default {
   }
 
   .view {
-    margin-top: 6rem;
+    margin-top: 3rem;
   }
 
   .nav-icon {

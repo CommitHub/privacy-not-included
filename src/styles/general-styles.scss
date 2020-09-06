@@ -16,25 +16,6 @@
 	}
 }
 
-.btn-main {
-  color: white;
-  background-color: $primary;
-  border-radius: 2rem;
-  border: none;
-  padding: 1rem 2rem;
-  text-align: center;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-
-  &:hover {
-    background-color: darken($color:$primary, $amount: 10%);
-  }
-
-  a {
-    color: white;
-    text-decoration: none;
-  }
-}
-
 .hidden {
   display: none;
 }
