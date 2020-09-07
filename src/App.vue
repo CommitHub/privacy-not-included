@@ -1,7 +1,12 @@
 <template>
   <v-app id="app">
     <v-app-bar fixed color="primary" light>
-      <v-toolbar-title>Privacy Not Included</v-toolbar-title>
+      <v-toolbar-title>
+        <router-link class="nav-link" to="/">
+          Privacy Not Included
+        </router-link>
+      </v-toolbar-title>
+      <router-link class="nav-link mx-6" to="/mission">Mission</router-link>
       <v-spacer></v-spacer>
       <v-btn icon>
         <router-link to="/">
@@ -81,6 +86,7 @@ export default {
 
   a {
     color: $font-color-dark;
+    margin: 0;
   }
 
   .view {
@@ -89,6 +95,14 @@ export default {
 
   .nav-icon {
     color: $font-color-dark;
+  }
+
+  .v-toolbar__title {
+    color: $font-color-dark;
+  }
+
+  .nav-link {
+    text-decoration: none;
   }
 }
 </style>

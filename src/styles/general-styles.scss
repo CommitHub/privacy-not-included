@@ -16,6 +16,10 @@
 	}
 }
 
+.accent-text {
+  color: darken($accent, 10%);
+}
+
 .hidden {
   display: none;
 }
