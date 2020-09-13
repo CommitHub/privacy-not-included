@@ -72,11 +72,10 @@ export default {
       companies.forEach(company => {
         company.privacyViolation.forEach(violation => {
           formattedData.push({
-            name: company.name,
-            amount: this.formatMoney(violation.amount),
+            name: `"${company.name}"`,
+            amount: `"${this.formatMoney(violation.amount)}"`,
             year: violation.year,
-            source: violation.source,
-            description: violation.description
+            source: violation.source
           });
         });
       });

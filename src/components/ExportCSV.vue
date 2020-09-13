@@ -20,8 +20,8 @@ export default {
       const formattedData = exportData;
       let csvContent = "data:text/csv;charset=utf-8,";
       csvContent += [
-        Object.keys(formattedData[0]).join(";"),
-        ...formattedData.map(item => Object.values(item).join(";"))
+        Object.keys(formattedData[0]).join(","),
+        ...formattedData.map(item => Object.values(item).join(","))
       ]
         .join("\n")
         .replace(/(^\[)|(\]$)/gm, "");
