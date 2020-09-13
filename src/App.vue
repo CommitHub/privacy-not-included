@@ -1,20 +1,39 @@
 <template>
   <v-app id="app">
-    <v-app-bar fixed color="primary" light>
+    <v-app-bar color="primary" light>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>
-        <router-link class="nav-link" to="/">
+        <router-link class="nav-title" to="/">
           Privacy Not Included
         </router-link>
       </v-toolbar-title>
-      <router-link class="nav-link mx-6" to="/mission">Mission</router-link>
       <v-spacer></v-spacer>
-      <v-btn icon>
-        <router-link to="/">
-          <v-icon class="nav-icon">fas fa-home</v-icon>
-        </router-link>
-      </v-btn>
+      <router-link to="/">
+        <v-btn icon>
+          <div class="flex-column">
+            <v-icon class="nav-icon">fas fa-home</v-icon>
+            <p class="nav-icon-title">Home</p>
+          </div>
+        </v-btn>
+      </router-link>
     </v-app-bar>
-    <router-view class="view" />
+    <v-navigation-drawer v-model="drawer" absolute temporary>
+      <v-list nav dense>
+        <v-list-item-group
+          v-model="group"
+          active-class="deep-purple--text text--accent-4"
+        >
+          <router-link to="/mission">
+            <v-list-item>
+              <v-list-item-title>
+                <span class="nav-link">Mission</span>
+              </v-list-item-title>
+            </v-list-item>
+          </router-link>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+    <router-view />
     <Footer />
   </v-app>
 </template>
@@ -26,6 +45,15 @@ export default {
   name: "App",
   components: {
     Footer
+  },
+  data: () => ({
+    drawer: false,
+    group: null
+  }),
+  watch: {
+    group() {
+      this.drawer = false;
+    }
   },
   created() {
     this.$store.commit("getCompaniesData");
@@ -89,20 +117,24 @@ export default {
     margin: 0;
   }
 
-  .view {
-    margin-top: 3rem;
-  }
-
   .nav-icon {
     color: $font-color-dark;
+  }
+
+  .nav-icon-title {
+    font-size: 0.5em;
   }
 
   .v-toolbar__title {
     color: $font-color-dark;
   }
 
-  .nav-link {
+  .nav-title {
     text-decoration: none;
+  }
+
+  .nav-link {
+    font-size: 1.4em;
   }
 }
 </style>
