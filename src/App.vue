@@ -10,7 +10,10 @@
       <v-spacer></v-spacer>
       <router-link to="/">
         <v-btn icon>
-          <v-icon class="nav-icon">fas fa-home</v-icon>
+          <div class="flex-column">
+            <v-icon class="nav-icon">fas fa-home</v-icon>
+            <p class="nav-icon-title">Home</p>
+          </div>
         </v-btn>
       </router-link>
     </v-app-bar>
@@ -116,6 +119,10 @@ export default {
 
   .nav-icon {
     color: $font-color-dark;
+  }
+
+  .nav-icon-title {
+    font-size: 0.5em;
   }
 
   .v-toolbar__title {
